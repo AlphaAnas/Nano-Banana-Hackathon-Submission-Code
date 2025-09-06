@@ -7,8 +7,8 @@ import ResultDisplay from './ResultDisplay';
 import Examples from './Examples';
 
 const furnitureExamples = [
-  { before: "https://storage.googleapis.com/aistudio-public/prompts/58d55a53-810a-4282-9646-c6e7144e1563.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/2042f22b-3e58-45e0-b66a-f35f09101c6e.jpeg", label: "Blue Sofa" },
-  { before: "https://storage.googleapis.com/aistudio-public/prompts/89a3205b-381a-4643-9a3d-a9b05c21f734.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/68e27f09-0260-4f51-83d8-21d1d911a76c.jpeg", label: "Wooden Bed" },
+  { before: "room_b4.png", after: "room_after.png", label: "Sofa Placement in Room" },
+  { before: "house2_b4.jpg", after: "room2_after.png", label: "Wooden Bed" },
 ];
 
 

@@ -7,8 +7,8 @@ import ResultDisplay from './ResultDisplay';
 import Examples from './Examples';
 
 const homeDesignExamples = [
-  { before: "https://storage.googleapis.com/aistudio-public/prompts/d815599f-7911-4122-a720-72c6086f6d89.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/8106a7df-a070-4e1e-b816-3e4b301c3855.jpeg", label: "Modern Living Room" },
-  { before: "https://storage.googleapis.com/aistudio-public/prompts/90100f98-c116-430c-8e81-34446a81b7e6.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/f885a068-d055-442a-a92c-352b2f6759c5.jpeg", label: "Rustic Kitchen" },
+  { before: "home_archi_b4.jpg", after: "home_archi.png", label: "Modern Living Room" },
+ 
 ];
 
 
