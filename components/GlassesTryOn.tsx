@@ -9,8 +9,8 @@ import { CameraIcon } from './Icons';
 import Examples from './Examples';
 
 const glassesExamples = [
-  { before: "https://storage.googleapis.com/aistudio-public/prompts/e9c24ce6-1a84-4632-9653-40e1f74f7626.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/1a216231-1033-4029-a417-06d213898a3e.jpeg", label: "Aviator Sunglasses" },
-  { before: "https://storage.googleapis.com/aistudio-public/prompts/f0985292-62b8-472e-836f-cb91176b5d84.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/86481698-251f-4424-9b76-74737d6d7e6d.jpeg", label: "Round Prescription Glasses" },
+  { before: "glasses_b4_me.jpg", after: "glasses_after_me.png", label: "Aviator Sunglasses" },
+  { before: "/cat_b4.png", after: "cat_after.png", label: "Round Prescription Glasses" },
 ];
 
 

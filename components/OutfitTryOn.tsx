@@ -9,8 +9,8 @@ import { CameraIcon } from './Icons';
 import Examples from './Examples';
 
 const outfitExamples = [
-  { before: "https://storage.googleapis.com/aistudio-public/prompts/81093512-1ce8-4f81-80e9-114fe2d14a51.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/7e5f1f7d-75e1-4357-827c-1f5921f00a40.jpeg", label: "Red Jacket" },
-  { before: "https://storage.googleapis.com/aistudio-public/prompts/3238e833-2892-4948-89c0-99c5c9e6583d.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/5f14e50d-2e2a-4a6c-94a2-1e9a26325997.jpeg", label: "Floral Dress" },
+  { before: "anas_b4.jpeg", after: "anas_after.png", label: "Red Jacket" },
+  { before: "cat_b4_clothes.jpg", after: "cat_clothes_after.png", label: "Floral Dress" },
 ];
 
 
