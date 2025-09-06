@@ -1,0 +1,7 @@
+{
+  "name": "VizFit - AI Virtual Try-On",
+  "description": "Virtually try on glasses and outfits, place furniture in your room, or visualize home designs from floor plans. Powered by Gemini AI, VizFit brings your ideas to life before you buy or build.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
