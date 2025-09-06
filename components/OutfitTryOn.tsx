@@ -6,6 +6,13 @@ import LoadingSpinner from './LoadingSpinner';
 import ResultDisplay from './ResultDisplay';
 import WebcamCapture from './WebcamCapture';
 import { CameraIcon } from './Icons';
+import Examples from './Examples';
+
+const outfitExamples = [
+  { before: "https://storage.googleapis.com/aistudio-public/prompts/81093512-1ce8-4f81-80e9-114fe2d14a51.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/7e5f1f7d-75e1-4357-827c-1f5921f00a40.jpeg", label: "Red Jacket" },
+  { before: "https://storage.googleapis.com/aistudio-public/prompts/3238e833-2892-4948-89c0-99c5c9e6583d.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/5f14e50d-2e2a-4a6c-94a2-1e9a26325997.jpeg", label: "Floral Dress" },
+];
+
 
 const OutfitTryOn: React.FC = () => {
   const [bodyPhoto, setBodyPhoto] = useState<ImageFile | null>(null);
@@ -66,34 +73,35 @@ const OutfitTryOn: React.FC = () => {
 
 
   return (
-    <div className="max-w-2xl mx-auto w-full">
-      <div className="bg-gray-800/50 p-6 rounded-lg shadow-lg space-y-6">
-        <h3 className="text-xl font-semibold text-white text-center">Upload Your Images</h3>
-        <div className="flex flex-col md:flex-row gap-4">
-          <ImageUploader label="Upload Body Photo" onImageUpload={setBodyPhoto} uploadedImage={bodyPhoto} />
-          <ImageUploader label="Upload Clothing" onImageUpload={setClothing} uploadedImage={clothing} />
+    <div className="max-w-4xl mx-auto w-full">
+      <Examples title="Style Inspiration" examples={outfitExamples} />
+      <div className="bg-gray-800/50 p-6 sm:p-8 rounded-lg shadow-lg space-y-8 mt-8">
+        <h3 className="text-2xl font-bold text-white text-center">Design Your Outfit</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ImageUploader label="1. Upload Your Photo" onImageUpload={setBodyPhoto} uploadedImage={bodyPhoto} />
+          <ImageUploader label="2. Upload Clothing" onImageUpload={setClothing} uploadedImage={clothing} />
         </div>
         <button onClick={() => setShowWebcam(true)} className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
             <CameraIcon className="w-5 h-5" />
-            Use Webcam for Body Photo
+            Use Webcam for Your Photo
         </button>
         {showWebcam && <WebcamCapture onCapture={handleWebcamCapture} onClose={() => setShowWebcam(false)} />}
         <div>
-          <label htmlFor="prompt-outfit" className="block text-sm font-medium text-gray-300 mb-1">Refine your request (optional)</label>
+          <label htmlFor="prompt-outfit" className="block text-sm font-medium text-gray-300 mb-2">3. Refine your request (optional)</label>
           <input
             id="prompt-outfit"
             type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="e.g., Change the shirt's pattern to stripes"
-            className="w-full bg-gray-700 text-white border-gray-600 rounded-md p-2 focus:ring-purple-500 focus:border-purple-500"
+            className="w-full bg-gray-700 text-white border-gray-600 rounded-md p-3 focus:ring-purple-500 focus:border-purple-500"
           />
         </div>
         {error && <p className="text-red-400 text-center text-sm">{error}</p>}
         <button
           onClick={handleGenerate}
           disabled={!bodyPhoto || !clothing}
-          className="w-full bg-purple-600 text-white font-bold py-3 px-4 rounded-md hover:bg-purple-700 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
+          className="w-full bg-purple-600 text-white font-bold py-4 px-4 rounded-lg text-lg hover:bg-purple-700 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
         >
           Generate Outfit
         </button>

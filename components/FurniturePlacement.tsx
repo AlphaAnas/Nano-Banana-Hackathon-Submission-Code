@@ -4,6 +4,13 @@ import { generateImageWithGemini } from '../services/geminiService';
 import ImageUploader from './ImageUploader';
 import LoadingSpinner from './LoadingSpinner';
 import ResultDisplay from './ResultDisplay';
+import Examples from './Examples';
+
+const furnitureExamples = [
+  { before: "https://storage.googleapis.com/aistudio-public/prompts/58d55a53-810a-4282-9646-c6e7144e1563.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/2042f22b-3e58-45e0-b66a-f35f09101c6e.jpeg", label: "Blue Sofa" },
+  { before: "https://storage.googleapis.com/aistudio-public/prompts/89a3205b-381a-4643-9a3d-a9b05c21f734.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/68e27f09-0260-4f51-83d8-21d1d911a76c.jpeg", label: "Wooden Bed" },
+];
+
 
 const FurniturePlacement: React.FC = () => {
   const [roomPhoto, setRoomPhoto] = useState<ImageFile | null>(null);
@@ -57,29 +64,30 @@ const FurniturePlacement: React.FC = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto w-full">
-      <div className="bg-gray-800/50 p-6 rounded-lg shadow-lg space-y-6">
-        <h3 className="text-xl font-semibold text-white text-center">Upload Your Images</h3>
-        <div className="flex flex-col md:flex-row gap-4">
-          <ImageUploader label="Upload Room Photo" onImageUpload={setRoomPhoto} uploadedImage={roomPhoto} />
-          <ImageUploader label="Upload Furniture" onImageUpload={setFurniture} uploadedImage={furniture} />
+    <div className="max-w-4xl mx-auto w-full">
+      <Examples title="Room Redesign Ideas" examples={furnitureExamples} />
+      <div className="bg-gray-800/50 p-6 sm:p-8 rounded-lg shadow-lg space-y-8 mt-8">
+        <h3 className="text-2xl font-bold text-white text-center">Redesign Your Space</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ImageUploader label="1. Upload Room Photo" onImageUpload={setRoomPhoto} uploadedImage={roomPhoto} />
+          <ImageUploader label="2. Upload Furniture" onImageUpload={setFurniture} uploadedImage={furniture} />
         </div>
         <div>
-          <label htmlFor="prompt-furniture" className="block text-sm font-medium text-gray-300 mb-1">Placement Instructions</label>
+          <label htmlFor="prompt-furniture" className="block text-sm font-medium text-gray-300 mb-2">3. Placement Instructions</label>
           <input
             id="prompt-furniture"
             type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="e.g., Rotate the sofa 45 degrees"
-            className="w-full bg-gray-700 text-white border-gray-600 rounded-md p-2 focus:ring-purple-500 focus:border-purple-500"
+            className="w-full bg-gray-700 text-white border-gray-600 rounded-md p-3 focus:ring-purple-500 focus:border-purple-500"
           />
         </div>
         {error && <p className="text-red-400 text-center text-sm">{error}</p>}
         <button
           onClick={handleGenerate}
           disabled={!roomPhoto || !furniture}
-          className="w-full bg-purple-600 text-white font-bold py-3 px-4 rounded-md hover:bg-purple-700 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
+          className="w-full bg-purple-600 text-white font-bold py-4 px-4 rounded-lg text-lg hover:bg-purple-700 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
         >
           Place Furniture
         </button>

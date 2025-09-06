@@ -4,6 +4,13 @@ import { generateImageWithGemini } from '../services/geminiService';
 import ImageUploader from './ImageUploader';
 import LoadingSpinner from './LoadingSpinner';
 import ResultDisplay from './ResultDisplay';
+import Examples from './Examples';
+
+const homeDesignExamples = [
+  { before: "https://storage.googleapis.com/aistudio-public/prompts/d815599f-7911-4122-a720-72c6086f6d89.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/8106a7df-a070-4e1e-b816-3e4b301c3855.jpeg", label: "Modern Living Room" },
+  { before: "https://storage.googleapis.com/aistudio-public/prompts/90100f98-c116-430c-8e81-34446a81b7e6.jpeg", after: "https://storage.googleapis.com/aistudio-public/prompts/f885a068-d055-442a-a92c-352b2f6759c5.jpeg", label: "Rustic Kitchen" },
+];
+
 
 const HomeDesign: React.FC = () => {
   const [floorPlan, setFloorPlan] = useState<ImageFile | null>(null);
@@ -70,29 +77,30 @@ const HomeDesign: React.FC = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto w-full">
-      <div className="bg-gray-800/50 p-6 rounded-lg shadow-lg space-y-6">
-        <h3 className="text-xl font-semibold text-white text-center">Upload Your Blueprints</h3>
-        <div className="flex flex-col md:flex-row gap-4">
-          <ImageUploader label="Upload Floor Plan" onImageUpload={setFloorPlan} uploadedImage={floorPlan} />
-          <ImageUploader label="Upload Facade/Style (Optional)" onImageUpload={setStyleImage} uploadedImage={styleImage} />
+    <div className="max-w-4xl mx-auto w-full">
+      <Examples title="Design Inspiration" examples={homeDesignExamples} />
+      <div className="bg-gray-800/50 p-6 sm:p-8 rounded-lg shadow-lg space-y-8 mt-8">
+        <h3 className="text-2xl font-bold text-white text-center">Visualize Your Home</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ImageUploader label="1. Upload Floor Plan" onImageUpload={setFloorPlan} uploadedImage={floorPlan} />
+          <ImageUploader label="2. Upload Facade/Style (Optional)" onImageUpload={setStyleImage} uploadedImage={styleImage} />
         </div>
         <div>
-          <label htmlFor="prompt-design" className="block text-sm font-medium text-gray-300 mb-1">Design Instructions</label>
+          <label htmlFor="prompt-design" className="block text-sm font-medium text-gray-300 mb-2">3. Design Instructions</label>
           <textarea
             id="prompt-design"
             rows={3}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="e.g., A cozy, rustic living room with a fireplace"
-            className="w-full bg-gray-700 text-white border-gray-600 rounded-md p-2 focus:ring-purple-500 focus:border-purple-500"
+            className="w-full bg-gray-700 text-white border-gray-600 rounded-md p-3 focus:ring-purple-500 focus:border-purple-500"
           />
         </div>
         {error && <p className="text-red-400 text-center text-sm">{error}</p>}
         <button
           onClick={handleGenerate}
           disabled={!floorPlan}
-          className="w-full bg-purple-600 text-white font-bold py-3 px-4 rounded-md hover:bg-purple-700 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
+          className="w-full bg-purple-600 text-white font-bold py-4 px-4 rounded-lg text-lg hover:bg-purple-700 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
         >
           Visualize Home Design
         </button>

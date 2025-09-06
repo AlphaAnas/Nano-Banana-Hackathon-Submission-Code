@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { AppMode } from './types';
 import Header from './components/Header';
@@ -30,12 +29,12 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-gray-900 text-gray-100 font-sans flex flex-col">
       <Header />
       <main className="flex-grow container mx-auto p-4 md:p-8 flex flex-col">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">Visualize Your Vision</h2>
-          <p className="text-base sm:text-lg text-gray-400">Try on, place, or design anything. Powered by Gemini AI.</p>
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3 tracking-tight">Visualize Your Vision</h2>
+          <p className="text-lg sm:text-xl text-gray-400">Try on, place, or design anything. Powered by Gemini AI.</p>
         </div>
         <ModeSelector currentMode={mode} setMode={setMode} />
-        <div className="mt-8 flex-grow">
+        <div className="mt-10 flex-grow animate-fade-in">
           {renderContent()}
         </div>
       </main>
